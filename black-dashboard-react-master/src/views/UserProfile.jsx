@@ -50,7 +50,7 @@ class UserProfile extends React.Component {
                         <FormGroup>
                           <label>Company (disabled)</label>
                           <Input
-                            defaultValue="Creative Code Inc."
+                            defaultValue="Movi Inc."
                             disabled
                             placeholder="Company"
                             type="text"
