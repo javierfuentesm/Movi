@@ -20,7 +20,8 @@ import Icons from "views/Icons.jsx";
 import Map from "views/Map.jsx";
 import Notifications from "views/Notifications.jsx";
 import Rtl from "views/Rtl.jsx";
-import TableList from "views/TableList.jsx";
+import Viajes from "views/Viajes.jsx";
+import Metodos from "views/Metodos.jsx";
 import Typography from "views/Typography.jsx";
 import UserProfile from "views/UserProfile.jsx";
 
@@ -34,20 +35,21 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/tables",
-    name: "Table List",
+    path: "/viajes",
+    name: "Mis viajes",
     rtlName: "قائمة الجدول",
     icon: "tim-icons icon-puzzle-10",
-    component: TableList,
+    component: Viajes,
     layout: "/admin"
   },
   {
-    path: "/rtl-support",
-    name: "RTL Support",
-    rtlName: "ار تي ال",
-    icon: "tim-icons icon-world",
-    component: Rtl,
-    layout: "/rtl"
+    path: "/metodos",
+    name: "Mis métodos de pago",
+    rtlName: "قائمة الجدول",
+    icon: "tim-icons icon-credit-card",
+    component: Metodos,
+    layout: "/admin"
   }
+
 ];
 export default routes;
