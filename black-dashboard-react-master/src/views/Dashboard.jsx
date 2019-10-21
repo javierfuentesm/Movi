@@ -68,6 +68,43 @@ class Dashboard extends React.Component {
     return (
       <>
         <div className="content">
+        <Row>
+            <Col xs="6">
+              <Card className="card-chart">
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="12">
+                      <CardTitle tag="h3">Ruta Origen</CardTitle>
+                      <Input
+                        type="text"
+                        placeholder="Ingresa Punto de partida"
+                        onFocus={this.onFocus}
+                        onBlur={this.onBlur}
+                      />
+                    </Col>
+                  </Row>
+                </CardHeader>
+              </Card>
+            </Col>
+            <Col xs="6">
+              <Card className="card-chart">
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="12">
+                      <CardTitle tag="h3">Ruta Destino</CardTitle>
+                      <Input
+                        type="text"
+                        placeholder="¿A dondé vas?"
+                        onFocus={this.onFocus}
+                        onBlur={this.onBlur}
+                      />
+                     
+                  </Col>
+                  </Row>
+                </CardHeader>
+              </Card>
+            </Col>
+          </Row>
           <Row>
             <Col xs="12">
               <Card className="card-chart">
@@ -85,42 +122,7 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
-          <Row>
-            <Col xs="6">
-              <Card className="card-chart">
-                <CardHeader>
-                  <Row>
-                    <Col className="text-left" sm="12">
-                      <CardTitle tag="h3">Ruta Origen</CardTitle>
-                      <Input
-                type="text"
-                placeholder="Ingresa Punto de partida"
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-              />
-                    </Col>
-                  </Row>
-                </CardHeader>
-              </Card>
-            </Col>
-            <Col xs="6">
-              <Card className="card-chart">
-                <CardHeader>
-                  <Row>
-                    <Col className="text-left" sm="12">
-                      <CardTitle tag="h3">Ruta Destino</CardTitle>
-                      <Input
-                type="text"
-                placeholder="¿A dondé vas?"
-                onFocus={this.onFocus}
-                onBlur={this.onBlur}
-              />
-                    </Col>
-                  </Row>
-                </CardHeader>
-              </Card>
-            </Col>
-          </Row>
+
         </div>
       </>
     );

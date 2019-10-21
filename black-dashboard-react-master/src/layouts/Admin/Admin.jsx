@@ -38,8 +38,11 @@ class Admin extends React.Component {
     this.state = {
       backgroundColor: "green",
       sidebarOpened:
-        document.documentElement.className.indexOf("nav-open") !== -1
+        document.documentElement.className.indexOf("nav-open") !== -1,
+        
     };
+    document.body.classList.add("white-content");
+
   }
   componentDidMount() {
     if (navigator.platform.indexOf("Win") > -1) {
