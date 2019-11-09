@@ -1,305 +1,4 @@
-/* import React from "react";
-// react plugin used to create google maps
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker
-} from "react-google-maps";
-
-
-// reactstrap components
-import { Card, CardHeader, CardBody, Row, Col } from "reactstrap";
-const { SearchBox } = require("react-google-maps/lib/components/places/SearchBox");
-
-
-const MapWrapper = withScriptjs(
-  withGoogleMap(props => (
-    <GoogleMap
-      defaultZoom={13}
-      defaultCenter={{ lat: 19.4266971, lng: -99.1701658 }}
-      defaultOptions={{
-        scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
-        styles: [
-          {
-            elementType: "geometry",
-            stylers: [
-              {
-                color: "#1d2c4d"
-              }
-            ]
-          },
-          {
-            elementType: "labels.text.fill",
-            stylers: [
-              {
-                color: "#8ec3b9"
-              }
-            ]
-          },
-          {
-            elementType: "labels.text.stroke",
-            stylers: [
-              {
-                color: "#1a3646"
-              }
-            ]
-          },
-          {
-            featureType: "administrative.country",
-            elementType: "geometry.stroke",
-            stylers: [
-              {
-                color: "#4b6878"
-              }
-            ]
-          },
-          {
-            featureType: "administrative.land_parcel",
-            elementType: "labels.text.fill",
-            stylers: [
-              {
-                color: "#64779e"
-              }
-            ]
-          },
-          {
-            featureType: "administrative.province",
-            elementType: "geometry.stroke",
-            stylers: [
-              {
-                color: "#4b6878"
-              }
-            ]
-          },
-          {
-            featureType: "landscape.man_made",
-            elementType: "geometry.stroke",
-            stylers: [
-              {
-                color: "#334e87"
-              }
-            ]
-          },
-          {
-            featureType: "landscape.natural",
-            elementType: "geometry",
-            stylers: [
-              {
-                color: "#023e58"
-              }
-            ]
-          },
-          {
-            featureType: "poi",
-            elementType: "geometry",
-            stylers: [
-              {
-                color: "#283d6a"
-              }
-            ]
-          },
-          {
-            featureType: "poi",
-            elementType: "labels.text.fill",
-            stylers: [
-              {
-                color: "#6f9ba5"
-              }
-            ]
-          },
-          {
-            featureType: "poi",
-            elementType: "labels.text.stroke",
-            stylers: [
-              {
-                color: "#1d2c4d"
-              }
-            ]
-          },
-          {
-            featureType: "poi.park",
-            elementType: "geometry.fill",
-            stylers: [
-              {
-                color: "#023e58"
-              }
-            ]
-          },
-          {
-            featureType: "poi.park",
-            elementType: "labels.text.fill",
-            stylers: [
-              {
-                color: "#3C7680"
-              }
-            ]
-          },
-          {
-            featureType: "road",
-            elementType: "geometry",
-            stylers: [
-              {
-                color: "#304a7d"
-              }
-            ]
-          },
-          {
-            featureType: "road",
-            elementType: "labels.text.fill",
-            stylers: [
-              {
-                color: "#98a5be"
-              }
-            ]
-          },
-          {
-            featureType: "road",
-            elementType: "labels.text.stroke",
-            stylers: [
-              {
-                color: "#1d2c4d"
-              }
-            ]
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry",
-            stylers: [
-              {
-                color: "#2c6675"
-              }
-            ]
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry.fill",
-            stylers: [
-              {
-                color: "#9d2a80"
-              }
-            ]
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry.stroke",
-            stylers: [
-              {
-                color: "#9d2a80"
-              }
-            ]
-          },
-          {
-            featureType: "road.highway",
-            elementType: "labels.text.fill",
-            stylers: [
-              {
-                color: "#b0d5ce"
-              }
-            ]
-          },
-          {
-            featureType: "road.highway",
-            elementType: "labels.text.stroke",
-            stylers: [
-              {
-                color: "#023e58"
-              }
-            ]
-          },
-          {
-            featureType: "transit",
-            elementType: "labels.text.fill",
-            stylers: [
-              {
-                color: "#98a5be"
-              }
-            ]
-          },
-          {
-            featureType: "transit",
-            elementType: "labels.text.stroke",
-            stylers: [
-              {
-                color: "#1d2c4d"
-              }
-            ]
-          },
-          {
-            featureType: "transit.line",
-            elementType: "geometry.fill",
-            stylers: [
-              {
-                color: "#283d6a"
-              }
-            ]
-          },
-          {
-            featureType: "transit.station",
-            elementType: "geometry",
-            stylers: [
-              {
-                color: "#3a4762"
-              }
-            ]
-          },
-          {
-            featureType: "water",
-            elementType: "geometry",
-            stylers: [
-              {
-                color: "#0e1626"
-              }
-            ]
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.fill",
-            stylers: [
-              {
-                color: "#4e6d70"
-              }
-            ]
-          }
-        ]
-      }}
-    >
-      <Marker position={{ lat: 19.4266971, lng: -99.1701658 }} />
-    </GoogleMap>
-  ))
-);
-
-class Map extends React.Component {
-  render() {
-    return (
-      <>
-        <div className="content">
-          <Row>
-            <Col md="12">
-              <Card className="card-plain">
-                <CardBody>
-                  <div
-                    id="map"
-                    className="map"
-                    style={{ position: "relative", overflow: "hidden" }}
-                  >
-                    <MapWrapper
-                      googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmjvkXB_DMnBUNwxQztLMStyQmA_szbNw"
-                      loadingElement={<div style={{ height: `100%` }} />}
-                      containerElement={<div style={{ height: `100%` }} />}
-                      mapElement={<div style={{ height: `100%` }} />}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        </div>
-      </>
-    );
-  }
-}
- */
+/*global google*/
 import React from "react";
 const _ = require("lodash");
 const { compose, withProps, lifecycle } = require("recompose");
@@ -307,22 +6,29 @@ const {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
+  Marker,
+  DirectionsRenderer
 } = require("react-google-maps");
+
 const {
   SearchBox
 } = require("react-google-maps/lib/components/places/SearchBox");
+
 const Map = compose(
   withProps({
     googleMapURL:
-    "https://maps.googleapis.com/maps/api/js?key=AIzaSyCmjvkXB_DMnBUNwxQztLMStyQmA_szbNw&v=3.exp&libraries=geometry,drawing,places",
-      loadingElement: <div style={{ height: `100%` }} />,
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyCmjvkXB_DMnBUNwxQztLMStyQmA_szbNw&v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
+  withScriptjs,
+  withGoogleMap,
   lifecycle({
-    componentWillMount() {
+    componentDidMount() {
       const refs = {};
+      const DirectionsService = new google.maps.DirectionsService();
+
       this.setState({
         bounds: null,
         center: {
@@ -364,26 +70,33 @@ const Map = compose(
             center: nextCenter,
             markers: nextMarkers
           });
-          // this.setState(state => {
-          //   const nextMarkers2 = state.markers.push(nextMarkers);
-          //   return {
-          //     center: nextCenter,
-          //     markers: nextMarkers2
-          //   };
-          // });
-           refs.map.fitBounds(bounds);
+
+           //refs.map.fitBounds(bounds);
         }
       });
+
+      DirectionsService.route(
+        {
+          origin: new google.maps.LatLng(41.85073, -87.65126),
+          destination: new google.maps.LatLng(41.85258, -87.65141),
+          travelMode: google.maps.TravelMode.DRIVING
+        },
+        (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            this.setState({
+              directions: result
+            });
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
+        }
+      );
     }
-  }),
-  withScriptjs,
-  withGoogleMap
+  })
 )(props => (
   <GoogleMap
-    ref={props.onMapMounted}
-    defaultZoom={15}
-    center={props.center}
-    onBoundsChanged={props.onBoundsChanged}
+    defaultZoom={7}
+    defaultCenter={new google.maps.LatLng(19.426984, -99.169736)}
   >
     <SearchBox
       ref={props.onSearchBoxMounted}
@@ -409,13 +122,11 @@ const Map = compose(
         }}
       />
     </SearchBox>
-    
-    
 
-    {props.markers.map((marker, index) => (
-      <Marker key={index} position={marker.position} />
-    ))}
+   {props.directions && <DirectionsRenderer directions={props.directions} />}
+
+    
   </GoogleMap>
 ));
+
 export default Map;
-/*global google*/
