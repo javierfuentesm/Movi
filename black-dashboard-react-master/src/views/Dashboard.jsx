@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Black Dashboard React v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/black-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -22,41 +5,39 @@ import classNames from "classnames";
 import { Line, Bar } from "react-chartjs-2";
 import MapWrapper from "./Map";
 import Map from "./Map";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng
+} from "react-places-autocomplete";
 
 // reactstrap components
 import {
-  Button,
-  ButtonGroup,
   Card,
   CardHeader,
-  CardBody,
   CardTitle,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Label,
-  FormGroup,
   Input,
-  Table,
   Row,
   Col,
-  UncontrolledTooltip
 } from "reactstrap";
 
 // core components
-import {
+/* import {
   chartExample1,
   chartExample2,
   chartExample3,
   chartExample4
-} from "variables/charts.jsx";
+} from "variables/charts.jsx"; */
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bigChartData: "data1"
+      bigChartData: "data1",
+      addressIni: "",
+      addressFin: "",
+      origin:'',
+      destination:''
+      
     };
   }
   setBgChartData = name => {
@@ -64,23 +45,90 @@ class Dashboard extends React.Component {
       bigChartData: name
     });
   };
+
+  handleChange = address => {
+    this.setState({ addressIni:address });
+  };
+  handleChange2 = address => {
+    this.setState({ addressFin:address });
+  };
+
+  handleSelect = address => {
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng =>
+         this.setState({origin:latLng}))
+      .catch(error => console.error("Error", error));
+  };
+
+  handleSelect2 = address => {
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => this.setState({destination:latLng}))
+      .catch(error => console.error("Error", error));
+  };
+
   render() {
     return (
       <>
         <div className="content">
-        <Row>
+          <Row>
             <Col xs="6">
               <Card className="card-chart">
                 <CardHeader>
                   <Row>
                     <Col className="text-left" sm="12">
                       <CardTitle tag="h3">Ruta Origen</CardTitle>
-                      <Input
-                        type="text"
-                        placeholder="Ingresa Punto de partida"
-                        onFocus={this.onFocus}
-                        onBlur={this.onBlur}
-                      />
+                   
+
+                      <PlacesAutocomplete
+                        value={this.state.addressIni}
+                        onChange={this.handleChange}
+                        onSelect={this.handleSelect}
+                      >
+                        {({
+                          getInputProps,
+                          suggestions,
+                          getSuggestionItemProps,
+                          loading
+                        }) => (
+                          <div>
+                            <Input
+                              {...getInputProps({
+                                placeholder: "Buscando Ruta ...",
+                              })}
+                            />
+                            <div className="autocomplete-dropdown-container">
+                              {loading && <div>Loading...</div>}
+                              {suggestions.map(suggestion => {
+                                const className = suggestion.active
+                                  ? "suggestion-item--active"
+                                  : "suggestion-item";
+                                // inline style for demonstration purpose
+                                const style = suggestion.active
+                                  ? {
+                                      backgroundColor: "#fafafa",
+                                      cursor: "pointer"
+                                    }
+                                  : {
+                                      backgroundColor: "#ffffff",
+                                      cursor: "pointer"
+                                    };
+                                return (
+                                  <div
+                                    {...getSuggestionItemProps(suggestion, {
+                                      className,
+                                      style
+                                    })}
+                                  >
+                                    <span>{suggestion.description}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+                      </PlacesAutocomplete>
                     </Col>
                   </Row>
                 </CardHeader>
@@ -92,14 +140,56 @@ class Dashboard extends React.Component {
                   <Row>
                     <Col className="text-left" sm="12">
                       <CardTitle tag="h3">Ruta Destino</CardTitle>
-                      <Input
-                        type="text"
-                        placeholder="¿A dondé vas?"
-                        onFocus={this.onFocus}
-                        onBlur={this.onBlur}
-                      />
-                     
-                  </Col>
+                    
+                      <PlacesAutocomplete
+                        value={this.state.addressFin}
+                        onChange={this.handleChange2}
+                        onSelect={this.handleSelect2}
+                      >
+                        {({
+                          getInputProps,
+                          suggestions,
+                          getSuggestionItemProps,
+                          loading
+                        }) => (
+                          <div>
+                            <Input
+                              {...getInputProps({
+                                placeholder: "Buscando Ruta ...",
+                              })}
+                            />
+                            <div className="autocomplete-dropdown-container">
+                              {loading && <div>Loading...</div>}
+                              {suggestions.map(suggestion => {
+                                const className = suggestion.active
+                                  ? "suggestion-item--active"
+                                  : "suggestion-item";
+                                // inline style for demonstration purpose
+                                const style = suggestion.active
+                                  ? {
+                                      backgroundColor: "#fafafa",
+                                      cursor: "pointer"
+                                    }
+                                  : {
+                                      backgroundColor: "#ffffff",
+                                      cursor: "pointer"
+                                    };
+                                return (
+                                  <div
+                                    {...getSuggestionItemProps(suggestion, {
+                                      className,
+                                      style
+                                    })}
+                                  >
+                                    <span>{suggestion.description}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+                      </PlacesAutocomplete>
+                    </Col>
                   </Row>
                 </CardHeader>
               </Card>
@@ -117,12 +207,11 @@ class Dashboard extends React.Component {
                   </Row>
                 </CardHeader>
                 <div>
-                  <Map />
+                  <Map addressIni={this.state.origin} addressFin={this.state.destination} />
                 </div>
               </Card>
             </Col>
           </Row>
-
         </div>
       </>
     );
