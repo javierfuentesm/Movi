@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maps</title>
+
+    <style>
+        #map-canvas{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfw2K16bHtSCMiwJQaS89No5hF84c9snI&libraries=places" types="text/javascript"></script>
+</head>
+<body>
+    <div id="map-canvas"></div>
+    <button id="get">Get Direction</button>
+    <script>
+        var directionDisplay = new google.maps.DirectionsRenderer();
+        var directionService = new google.maps.DirectionsService();
+
+        var map;
+
+        var origen = new google.maps.LatLng(19.437639, -99.071475);
+        var destino = new google.maps.LatLng(19.426944, -99.169682);
+
+        var mapOptions = {
+            zoom: 14,
+            center: boudha
+        };
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        directionDisplay.setMap(map);
+
+        function calculateRoute() {
+            var request = {
+                origin: origen,
+                destination: destino,
+                travelMode: 'DRIVING'
+            };
+            directionService.route(request, function(result, status){
+                //console.log(result, status);
+                if(status == "OK"){
+                    directionDisplay.setDirections(result);
+                }
+            });
+        }
+        document.getElementById('get').onclick=function(){
+            calculateRoute();
+        };
+    </script>
+</body>
+</html>
