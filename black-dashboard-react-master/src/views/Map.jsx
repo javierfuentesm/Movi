@@ -12,27 +12,32 @@ class Map extends React.Component {
     directions: null
   };
 
-  componentDidMount() {
+  componentDidUpdate(prevProps) {
     const DirectionsService = new google.maps.DirectionsService();
 
-    DirectionsService.route(
-      {
-        origin: this.props.addressIni,
-        destination: this.props.addressFin,
-        travelMode: google.maps.TravelMode.DRIVING
-      },
-      (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-          this.setState({
-            directions: result
-          });
+    if (
+      this.props.addressFin !== prevProps.addressFin ||
+      this.props.addressIni !== prevProps.addressIni
+    ) {
+      DirectionsService.route(
+        {
+          origin: this.props.addressIni,
+          destination: this.props.addressFin,
+          travelMode: google.maps.TravelMode.DRIVING
+        },
+        (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            this.setState({
+              directions: result
+            });
 
-          console.log(this.state.directions);
-        } else {
-          console.error(`error fetching directions ${result}`);
+            console.log(this.state.directions);
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   render() {
@@ -46,7 +51,7 @@ class Map extends React.Component {
 
     return (
       <GoogleMapRoute
-        containerElement={<div style={{ height: "100vh", width: "75vw" }} />}
+        containerElement={<div style={{ height: "100vh", width: "100vw" }} />}
         mapElement={<div style={{ height: "100%" }} />}
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmjvkXB_DMnBUNwxQztLMStyQmA_szbNw&v=3.exp&libraries=geometry,drawing,places"
         loadingElement={<div style={{ height: "100%" }} />}
