@@ -63,13 +63,13 @@ class Map extends React.Component {
   render() {
     const GoogleMapRoute = withScriptjs(
       withGoogleMap(props => {
-       // if ((this.props.addressIni&&this.props.addressFin)) {
+        if ((this.props.addressIni&&this.props.addressFin)!=='') {
           return (
             <GoogleMap defaultCenter={this.props.addressIni} defaultZoom={13}>
               <DirectionsRenderer directions={this.state.directions} />
             </GoogleMap>
           );
-/*         } else {
+        } else {
           return (
             <GoogleMap
               defaultCenter={this.state.currentLatLng}
@@ -80,7 +80,7 @@ class Map extends React.Component {
               <DirectionsRenderer directions={this.state.directions} />
             </GoogleMap>
           );
-        } */
+        }
       })
     );
 
