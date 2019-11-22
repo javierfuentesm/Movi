@@ -1,5 +1,7 @@
 /*global google*/
 import React from "react";
+import { connect } from 'react-redux';
+
 const {
   withScriptjs,
   withGoogleMap,
@@ -34,6 +36,7 @@ class Map extends React.Component {
 
   componentDidUpdate(prevProps) {
     const DirectionsService = new google.maps.DirectionsService();
+   // console.log(this.props.data);
 
     if (
       this.props.addressFin !== prevProps.addressFin ||
@@ -94,5 +97,13 @@ class Map extends React.Component {
     );
   }
 }
-
-export default Map;
+const mapStateToProps = (state) => {
+  return {
+    data: state,
+ 
+  };
+};
+export default connect(
+  mapStateToProps,
+  null,
+)(Map);
