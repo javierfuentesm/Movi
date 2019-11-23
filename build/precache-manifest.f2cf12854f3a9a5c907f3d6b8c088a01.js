@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/Movi/static/media/anime3.bd6820f1.png"
   },
   {
-    "revision": "24012d329f2ce4b89ccd",
-    "url": "/Movi/static/css/main.a8fac0f1.chunk.css"
+    "revision": "99d90a47be822655999a",
+    "url": "/Movi/static/css/main.bf4fe0df.chunk.css"
   },
   {
-    "revision": "b17a118e13e53558658b681a0ebdad82",
-    "url": "/Movi/static/media/nucleo.b17a118e.ttf"
+    "revision": "03ef1918e505c3e3471f9369ef7a638f",
+    "url": "/Movi/static/media/nucleo.03ef1918.eot"
   },
   {
-    "revision": "018d09f0605e6bb2ddbd",
-    "url": "/Movi/static/js/1.018d09f0.chunk.js"
+    "revision": "0cf7e1100400feb82627",
+    "url": "/Movi/static/js/1.0cf7e110.chunk.js"
   },
   {
     "revision": "03582ad6d113a82b8584",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/Movi/static/media/react-logo.eb6be414.png"
   },
   {
-    "revision": "24012d329f2ce4b89ccd",
-    "url": "/Movi/static/js/main.24012d32.chunk.js"
+    "revision": "99d90a47be822655999a",
+    "url": "/Movi/static/js/main.99d90a47.chunk.js"
   },
   {
     "revision": "9fcf69e5359987c9b1545aae1c2c5faa",
@@ -40,15 +40,15 @@ self.__precacheManifest = [
     "url": "/Movi/static/media/nucleo.f0b489a5.woff"
   },
   {
-    "revision": "03ef1918e505c3e3471f9369ef7a638f",
-    "url": "/Movi/static/media/nucleo.03ef1918.eot"
+    "revision": "b17a118e13e53558658b681a0ebdad82",
+    "url": "/Movi/static/media/nucleo.b17a118e.ttf"
   },
   {
-    "revision": "018d09f0605e6bb2ddbd",
-    "url": "/Movi/static/css/1.3abab405.chunk.css"
+    "revision": "0cf7e1100400feb82627",
+    "url": "/Movi/static/css/1.1d785c4a.chunk.css"
   },
   {
-    "revision": "8610a57709fc96f86ff4824efb878578",
+    "revision": "eb9c4e6390ba3041cf3f73e56eea7e8e",
     "url": "/Movi/index.html"
   }
 ];
