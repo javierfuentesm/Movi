@@ -16,7 +16,6 @@ const API = "https://movi.javierfuentesm.now.sh/api/trips";
 const fetchdata = async () => {
   const response = await fetch(API);
   const data = await response.json();
-  console.log(data);
   return data;
 };
 const store = createStore(reducer, fetchdata(), composeEnhancers());
@@ -26,12 +25,10 @@ ReactDOM.render(
     <Router history={hist}>
       <Switch>
         <Route path="/admin" render={props => <AdminLayout {...props} />} />
-        <Route path="/login" exact>
-
-          <Login />
+        <Route path="/login" >
+          <Login history={hist} />
         </Route>
-{/*         <Redirect from="/" to="/admin/dashboard" />
- */}
+        <Redirect from="/" to="/login" />
       </Switch>
     </Router>
   </Provider>,

@@ -1,15 +1,19 @@
-const reducer = (state, action) => {
-    switch (action.type) {
-      case 'SET_INFO':
-        return {
-          ...state,
-          trips: [...state.data, action.payload],
+const reducer = (
+  state = {
+    user: [],
+    trips: []
+  },
+  action
+) => {
+  switch (action.type) {
+    case "SET_USER":
+      return {
+        user: [action.payload]
+      };
 
-        };
-  
-      default:
-        return state;
-    }
-  };
-  
-  export default reducer;
+    default:
+      return state;
+  }
+};
+
+export default reducer;
