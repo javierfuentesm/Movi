@@ -43,12 +43,13 @@ import {
 } from "reactstrap";
 
 // core components
+
 import {
   chartExample1,
   chartExample2,
   chartExample3,
   chartExample4
-} from "variables/charts.jsx";
+} from "../variables/charts.jsx";
 
 class Rtl extends React.Component {
   constructor(props) {

@@ -15,15 +15,15 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import Dashboard from "views/Dashboard.jsx";
-import Icons from "views/Icons.jsx";
-import Map from "views/Map.jsx";
-import Notifications from "views/Notifications.jsx";
-import Rtl from "views/Rtl.jsx";
-import Viajes from "views/Viajes.jsx";
-import Metodos from "views/Metodos.jsx";
-import Typography from "views/Typography.jsx";
-import UserProfile from "views/UserProfile.jsx";
+import Dashboard from "../src/views/Dashboard.jsx";
+import Icons from "../src/views/Icons.jsx";
+import Map from "../src/views/Map.jsx";
+import Notifications from "../src/views/Notifications.jsx";
+import Rtl from "../src/views/Rtl.jsx";
+import Viajes from "../src/views/Viajes.jsx";
+import Metodos from "../src/views/Metodos.jsx";
+import Typography from "../src/views/Typography.jsx";
+import UserProfile from "../src/views/UserProfile.jsx";
 
 var routes = [
   {
