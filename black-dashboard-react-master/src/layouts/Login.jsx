@@ -26,13 +26,14 @@ class Login extends React.Component {
         signOut,
         signInWithGoogle,
       } = this.props;
+      console.log(user);
       return (
         <Container>
          
     
           <Row>
            
-              <Col md={4}>
+              <Col md={12}>
                 <Card>
                   <CardHeader> Login</CardHeader>
     
@@ -47,18 +48,18 @@ class Login extends React.Component {
                       <h3>Login</h3>
                     </CardTitle>
                     <CardSubtitle>
-                      <h5>Inicia sesión con tu cuenta de Facebook</h5>
+                      <h5>Inicia sesión con tu cuenta de Google</h5>
                     </CardSubtitle>
                     {
               user
-                ? <p>Hello, {user.displayName}</p>
-                : <p>Please sign in.</p>
+                ? <p>Hola, {user.displayName}</p>
+                : <p>Iniciar Sesión.</p>
             }
   
             {
               user
-                ? <button onClick={signOut}>Sign out</button>
-                : <button onClick={signInWithGoogle}>Sign in with Google</button>
+                ? <a onClick={signOut}>Cerrar Sesión</a>
+                : <a onClick={signInWithGoogle}>Iniciar sesión</a>
             }
                  
                   </CardBody>
