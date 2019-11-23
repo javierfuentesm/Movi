@@ -12,6 +12,7 @@
     "dotenv": "^8.2.0",
     "dotenv-expand": "^5.1.0",
     "firebase": "^7.5.0",
+    "gh-pages": "^2.1.1",
     "history": "4.7.2",
     "node-sass": "^4.9.3",
     "perfect-scrollbar": "1.4.0",
