@@ -2,7 +2,7 @@
   "name": "black-dashboard-react",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://github.com/escomios/AppMovilidad",
+  "homepage": "https://javierfuentesm.github.io/Movi/",
   "dependencies": {
     "@types/react": "16.4.16",
     "axios": "^0.19.0",
@@ -35,7 +35,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "compile-scss": "node-sass src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.css"
+    "compile-scss": "node-sass src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.css",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
