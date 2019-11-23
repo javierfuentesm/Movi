@@ -1,9 +1,4 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
-import MapWrapper from "./Map";
 import Map from "./Map";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -11,14 +6,9 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 
 // reactstrap components
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  Input,
-  Row,
-  Col,
-} from "reactstrap";
+import { Card, CardHeader, CardTitle, Input, Row, Col } from "reactstrap";
+import { connect } from "react-redux";
+import { setTrips } from "../actions";
 
 // core components
 /* import {
@@ -35,11 +25,11 @@ class Dashboard extends React.Component {
       bigChartData: "data1",
       addressIni: "",
       addressFin: "",
-      origin:'',
-      destination:''
-      
+      origin: "",
+      destination: ""
     };
   }
+
   setBgChartData = name => {
     this.setState({
       bigChartData: name
@@ -47,26 +37,36 @@ class Dashboard extends React.Component {
   };
 
   handleChange = address => {
-    this.setState({ addressIni:address });
+    this.setState({ addressIni: address });
   };
   handleChange2 = address => {
-    this.setState({ addressFin:address });
+    this.setState({ addressFin: address });
   };
 
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng =>
-         this.setState({origin:latLng}))
+      .then(latLng => this.setState({ origin: latLng }))
       .catch(error => console.error("Error", error));
   };
 
   handleSelect2 = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => this.setState({destination:latLng}))
+      .then(latLng => this.setState({ destination: latLng }))
       .catch(error => console.error("Error", error));
   };
+  componentDidMount() {
+    const API = "https://movi.javierfuentesm.now.sh/api/trips";
+    const fetchdata = async () => {
+      const response = await fetch(API);
+      const data = await response.json();
+      this.props.setTrips(data.data);
+      return data;
+    };
+    fetchdata();
+   // console.log(this.props.user[0].name);
+  }
 
   render() {
     return (
@@ -79,8 +79,6 @@ class Dashboard extends React.Component {
                   <Row>
                     <Col className="text-left" sm="12">
                       <CardTitle tag="h3">Ruta Origen</CardTitle>
-                   
-
                       <PlacesAutocomplete
                         value={this.state.addressIni}
                         onChange={this.handleChange}
@@ -95,7 +93,7 @@ class Dashboard extends React.Component {
                           <div>
                             <Input
                               {...getInputProps({
-                                placeholder: "Buscando Ruta ...",
+                                placeholder: "Buscando Ruta ..."
                               })}
                             />
                             <div className="autocomplete-dropdown-container">
@@ -140,7 +138,7 @@ class Dashboard extends React.Component {
                   <Row>
                     <Col className="text-left" sm="12">
                       <CardTitle tag="h3">Ruta Destino</CardTitle>
-                    
+
                       <PlacesAutocomplete
                         value={this.state.addressFin}
                         onChange={this.handleChange2}
@@ -155,7 +153,7 @@ class Dashboard extends React.Component {
                           <div>
                             <Input
                               {...getInputProps({
-                                placeholder: "Buscando Ruta ...",
+                                placeholder: "Buscando Ruta ..."
                               })}
                             />
                             <div className="autocomplete-dropdown-container">
@@ -207,7 +205,10 @@ class Dashboard extends React.Component {
                   </Row>
                 </CardHeader>
                 <div>
-                  <Map addressIni={this.state.origin} addressFin={this.state.destination} />
+                  <Map
+                    addressIni={this.state.origin}
+                    addressFin={this.state.destination}
+                  />
                 </div>
               </Card>
             </Col>
@@ -218,4 +219,13 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+const mapDispatchToProps = {
+  setTrips
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

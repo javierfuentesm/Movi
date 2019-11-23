@@ -12,13 +12,8 @@ import "assets/demo/demo.css";
 import "assets/css/nucleo-icons.css";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const hist = createBrowserHistory();
-const API = "https://movi.javierfuentesm.now.sh/api/trips";
-const fetchdata = async () => {
-  const response = await fetch(API);
-  const data = await response.json();
-  return data;
-};
-const store = createStore(reducer, fetchdata(), composeEnhancers());
+
+const store = createStore(reducer,composeEnhancers());
 
 ReactDOM.render(
   <Provider store={store}>

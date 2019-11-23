@@ -8,8 +8,15 @@ const reducer = (
   switch (action.type) {
     case "SET_USER":
       return {
-        user: [action.payload]
+        ...state,
+        user: action.payload
       };
+      case "SET_TRIPS":
+        return {
+          ...state,
+          trips: action.payload
+        };
+        
 
     default:
       return state;

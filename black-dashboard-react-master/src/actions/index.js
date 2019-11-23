@@ -3,3 +3,8 @@ export const setUser = (payload) => ({
     payload,
   });
   
+export const setTrips = (payload) => ({
+    type: 'SET_TRIPS',
+    payload,
+  });
+  

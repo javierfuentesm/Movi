@@ -17,7 +17,6 @@ import "firebase/auth";
 import firebaseConfig from "../auth/firebaseConfig.js";
 import { connect } from "react-redux";
 import { setUser } from "../actions";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
@@ -39,7 +38,6 @@ class Login extends React.Component {
             this.props.setUser(this.state);
           
               this.props.history.push("/admin/dashboard");
-              console.log("si llego aqui");
 
             
           });
